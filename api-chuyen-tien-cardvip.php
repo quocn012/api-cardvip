@@ -1,3 +1,4 @@
+  
 <?php
 /**
  * API ĐƯỢC VIẾT BỞI CHÂU CHÍ QUỐC
@@ -28,10 +29,10 @@ curl_close($ch);
 $json = json_decode($content);
 if($json->status == true){
     // đoạn nầy thực hiện chuyễn tiền
-    $sdt = ""; // tên tài khoảng
-    $sotien = ""; // số tiền cần chuyễn
-    $noidung = ""; // nội dung cần chuyễn
-    $matkhaucap2 = ""; // mật khẩu cấp 2
+    $sdt = "0708675095"; // tên tài khoảng
+    $sotien = "100000"; // số tiền cần chuyễn
+    $noidung = "GD"; // nội dung cần chuyễn
+    $matkhaucap2 = "quoc01236"; // mật khẩu cấp 2
     $url_chuyen_tien = 'https://cardvip.vn/gd-chuyen-tien';
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url_chuyen_tien);
@@ -41,11 +42,11 @@ if($json->status == true){
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, 'PhoneNumber='.$sdt.'&ipTotalAmountMove='.$sotien.'&NoteMoveAmountAccount='.$noidung.'&PasswordAdvancedMoveAmount='.$matkhaucap2);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, 'PhoneNumber='.$sdt.'&PricesAmount='.$sotien.'&Note='.$noidung.'&PasswordAdvanced='.$matkhaucap2);
     $content = curl_exec($ch);
     curl_close($ch);
     $json = json_decode($content);
-    echo $json->msg;
+    echo strip_tags(trim($json->msg));
 }else{
     echo $json->msg;
 }
