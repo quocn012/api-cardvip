@@ -32,7 +32,7 @@ if($json->status == true){
     $sdt = "0708675095"; // tên tài khoảng
     $sotien = "100000"; // số tiền cần chuyễn
     $noidung = "GD"; // nội dung cần chuyễn
-    $matkhaucap2 = "quoc01236"; // mật khẩu cấp 2
+    $matkhaucap2 = ""; // mật khẩu cấp 2
     $url_chuyen_tien = 'https://cardvip.vn/gd-chuyen-tien';
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url_chuyen_tien);
